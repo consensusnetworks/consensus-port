@@ -8,4 +8,12 @@ export default defineNuxtConfig({
       postcssOptions: require("./postcss.config.js"),
     },
   },
+  head: {
+    link: [
+      {
+        rel: "stylesheet",
+        href: "https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css",
+      },
+    ],
+  },
 });

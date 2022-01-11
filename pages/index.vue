@@ -1,3 +1,6 @@
 <template>
-    <div>Home Page</div>
+  <div>
+    <BarChart />
+    <StreetMap />
+  </div>
 </template>
