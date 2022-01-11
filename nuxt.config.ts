@@ -16,4 +16,7 @@ export default defineNuxtConfig({
       },
     ],
   },
+  publicRuntimeConfig: {
+    MAPBOX_ACCESS_TOKEN: '"pk.eyJ1Ijoic2hhbmVqZWFybGV5IiwiYSI6ImNreDk2a3lpOTBjaXcydm12ZDk2c3gxeXUifQ.U2Uqnz-oOUMGpG-3_tr3ng"'
+  },
 });
