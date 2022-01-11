@@ -5,10 +5,13 @@
 ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-Accumulate Networks block explorer for supply chain consensus.
+Accumulate Network block explorer for supply chain consensus.
 
 ## About 
-Todo: Add description
+
+Accumulate is a high performance blockchain for DeFi, integrating blockchains, protocols, oracles, and applications. This block explorer helps you understand and act upon transactions from supply chain oracle data on Accumulate, demonstrating how the network provides a bridge to the digital economy.
+
+The default test supply chain oracle data for this explorer is on Accumulate testnet under the ADIs `acc://.../acme` and `acc://.../data`. If you'd like to use your own oracle ADIs to connect to your test data or supply chain, you can override the ADIs in `ADI_LIST` environment variable. This block explorer assumes a [standard schema](https://schema.org/) for supply chain oracle data, and you should structure your transactions according to this schema's required and extendable attributes. 
 
 ## Setup
 

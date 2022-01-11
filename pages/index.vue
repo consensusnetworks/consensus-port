@@ -68,10 +68,12 @@ const shuffleZoom = (_zoom) => {
   mapData.value.zoom = Math.random() * (10 - 1 + 1) + 1;
 };
 
-setInterval(() => {
+setInterval(async () => {
   shuffleArray(chartData.value.datasets[0].data);
   shuffleType(chartData.value.datasets[0].type);
   shufflePoint(mapData.value.center);
   shuffleZoom(mapData.value.zoom);
 }, 3000);
+
+
 </script>
