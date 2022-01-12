@@ -33,8 +33,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            consensusnetworks/${{ github.repository }}:${{ github.sha }}
-            consensusnetworks/${{ github.repository }}:latest
+            ${{ github.repository }}:${{ github.sha }}
+            ${{ github.repository }}:latest
 
       # AWS ECR - For private repositories
       #
