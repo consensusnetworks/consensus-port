@@ -57,7 +57,7 @@
         :class="drawer ? 'translate-x-0' : '-translate-x-full'"
         >   
             
-            <div class="w-80 bg-white ">
+            <div class="w-80 bg-white drop-shadow-lg ">
                 <div class="text-primary text-xl font-medium flex justify-center items-center py-6" @click="toggleDrawer">
                     <img src="../assets/images/consensus-logo.png" alt="" class="h-4 mr-2">
                     Consensus Port
@@ -67,7 +67,8 @@
                     Sidebar items...
                 </div>
             </div>
-            <div class="w-screen bg-grey opacity-20" @click="toggleDrawer"></div>
+            <div class=""></div>
+            <div class="w-screen bg-grey opacity-0" @click="toggleDrawer"></div>
         </aside>
     </nav>
 </template>
