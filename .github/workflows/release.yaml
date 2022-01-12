@@ -20,7 +20,7 @@ jobs:
         with:
           # Replace with consensusnetworks Docker bot username/password
           username: shanejearley
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
           logout: true
 
       - name: Set up Docker Buildx
