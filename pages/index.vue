@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Works!</h1>
     <Chart :chartData="chartData" />
     <Map :mapData="mapData" />
   </div>

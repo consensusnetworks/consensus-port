@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consensus-port-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consensus-port
+  template:
+    metadata:
+      labels:
+        app: consensus-port
+    spec:
+      containers:
+        - name: consensus-port
+          image: consensusnetworks/consensus-port:latest
+          ports:
+            - containerPort: 80

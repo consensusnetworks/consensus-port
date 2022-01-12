@@ -29,6 +29,14 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
+## Testing
+
+We need to add test scripts compatible with Nuxt SSR and Docker (something like `@nuxt/test-utils` for Nuxt 3). Then we need to run those test scripts in `.github/workflows/pull-request.yaml` after the step for building the Docker image.
+
+## Deployment
+
+We use the Docker CLI in our GitHub Actions workflows to build and push our images to Docker Hub. We can then manage our Kubernetes manifests in a separate repository to isolate environment and deployment specific configuration. For reference, we included sample Kubernetes manifests that would be used for deploying this Nuxt app to AWS EKS in the `kubernetes` directory.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/consensus-port-roadmap) and open a new issue before starting!
