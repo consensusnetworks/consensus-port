@@ -35,7 +35,9 @@ We need to add test scripts compatible with Nuxt SSR and Docker (something like 
 
 ## Deployment
 
-We use the Docker CLI in our GitHub Actions workflows to build and push our images to Docker Hub. We can then manage our Kubernetes manifests in a separate repository to isolate environment and deployment specific configuration. For reference, we included sample Kubernetes manifests that would be used for deploying this Nuxt app to AWS EKS in the `kubernetes` directory.
+We use the Docker CLI in our GitHub Actions workflows to build and push our images to [Docker Hub](https://hub.docker.com/r/consensusnetworks/consensus-port). Pull requests to `develop` and `master` branches trigger image builds (and eventually tests). Pushes to `master` branch trigger image builds and pushes to the registry under the 'latest' and commit hash tags. Releases from the `master` branch trigger image builds and pushes to the registry under the 'latest', release number, and commit hash tags. 
+
+We can then manage our Kubernetes manifests in a separate repository to isolate environment and deployment specific configuration. For reference, we included sample Kubernetes manifests that would be used for deploying this Nuxt app to AWS EKS in the `kubernetes` directory.
 
 ## Contributing
 
