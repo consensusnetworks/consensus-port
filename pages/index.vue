@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-secondary h-screen">
-    <div class="flex justify-center pt-20">
+  <div>
+    <div class="flex justify-center py-20">
       <div class="w-1/3 border">
         <Chart :chartData="chartData" />
       </div>
