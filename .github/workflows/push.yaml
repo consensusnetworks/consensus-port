@@ -19,7 +19,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           # Replace with consensusnetworks Docker bot username/password
-          username: shanejearley
+          username: searleycn
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           logout: true
 
