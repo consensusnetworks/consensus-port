@@ -1,5 +1,5 @@
 <template>
-  <canvas id="chart" width="200" height="200"></canvas>
+  <canvas id="chart" width="10" height="200px"></canvas>
 </template>
 
 <script setup>
@@ -10,10 +10,6 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  chartType: {
-    type: String,
-    required: true,
-  }
 });
 
 let ctx = null;
