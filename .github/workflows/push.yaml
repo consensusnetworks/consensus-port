@@ -34,9 +34,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 
-            - $DOCKER_ORGANIZATION/$DOCKER_REPOSITORY:$IMAGE_TAG
-            - $DOCKER_ORGANIZATION/$DOCKER_REPOSITORY:latest
+          tags: |
+            $DOCKER_ORGANIZATION/$DOCKER_REPOSITORY:$IMAGE_TAG
+            $DOCKER_ORGANIZATION/$DOCKER_REPOSITORY:latest
 
       # AWS ECR - For private repositories
       #
@@ -63,6 +63,6 @@ jobs:
       #     context: .
       #     file: ./Dockerfile
       #     push: true
-      #     tags:
-      #       - $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-      #       - $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      #     tags: |
+      #       $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      #       $ECR_REGISTRY/$ECR_REPOSITORY:latest
