@@ -28,7 +28,7 @@ jobs:
         with:
           username: searleycn
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: consensusnetworks/${{ github.repository }}
+          repository: ${{ github.repository }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
