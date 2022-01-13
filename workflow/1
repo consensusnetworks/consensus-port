@@ -1,0 +1,2 @@
+git fetch origin develop:develop
+git reset --hard develop

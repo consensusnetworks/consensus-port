@@ -1,8 +1,12 @@
 <template>
   <div>
-    <h1>Works!</h1>
-    <Chart :chartData="chartData" />
-    <Map :mapData="mapData" />
+    <div class="flex justify-center py-20">
+      <div class="w-1/3 border">
+        <Chart :chartData="chartData" />
+      </div>
+    </div>
+    
+    <!-- <Map :mapData="mapData" /> -->
   </div>
 </template>
 
