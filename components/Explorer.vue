@@ -70,7 +70,7 @@
                                     <span class="font-extrabold h-5 text-lg whitespace-nowrap">06, Jan 22</span>
                                     <span class="text-grey text-sm whitespace-nowrap">22:22</span>
                                 </div>
-                                <div class="h-8 flex flex-col overflow-hidden">
+                                <div class="h-8 flex flex-col overflow-hidden mt-4">
                                     <div class="hover:-translate-y-[70%] hover:duration-long">
                                         <div class="flex flex-col px-4 text-center">
                                             <span class="text-grey font-semibold h-3 text-xs whitespace-nowrap">Transaction Type</span>
@@ -187,16 +187,12 @@ const chainAnalytics = useState("chainAnalytics", () => {
       stat: "1,000,000"
     },
     {
-      title: "Hash Rate",
-      stat: "4.04 PH/s"
-    },
-    {
       title: "Size",
       stat: "16,224,655 KB"
     },
     {
-      title: "Difficulty",
-      stat: "146.3 (M)"
+      title: "Current Fee",
+      stat: "1 ACME"
     },
   ]
 });
@@ -208,8 +204,8 @@ const transactionAnalytics = useState("transactionAnalytics", () => {
       stat: "14,520,325"
     },
     {
-      title: "Supply",
-      stat: "57,356,246"
+      title: "Transactions Rate",
+      stat: "4.04 TPS"
     },
   ]
 });
