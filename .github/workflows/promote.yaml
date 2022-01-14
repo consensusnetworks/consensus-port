@@ -21,6 +21,6 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: develop
-          team-reviewers: consensus-dev
+          reviewers: robo-support
           token: ${{ github.token }}
           title: "Promote develop to master"
