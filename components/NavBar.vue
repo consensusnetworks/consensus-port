@@ -1,6 +1,6 @@
 <template>
     <nav 
-    class="w-full bg-white p-1 drop-shadow-sm fixed z-10 py-3 px-3"
+    class="w-full bg-white p-1 drop-shadow-sm fixed z-10 py-3 px-7"
     >
         <div class="mx-auto h-10 flex justify-between items-center px-2">
             <div class="flex items-center text-primary space-x-6">
