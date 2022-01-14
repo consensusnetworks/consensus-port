@@ -60,13 +60,13 @@
                 <div v-for="i in 20" :key="i" class="cursor-pointer">
                     <div class="flex justify-start">
                         <div class="flex flex-col justify-center w-4">
-                            <div class=" border-r w-2 h-1/2 border-primary"></div>
-                            <div class="rounded-full h-6 w-4 border border-primary"></div>
+                            <div class=" border-r w-2 h-5/6 border-primary"></div>
+                            <div class="rounded-full h-8 w-4 border border-primary"></div>
                             <div class=" border-r w-2 h-full border-primary"></div>
                         </div>
-                        <div class="w-full py-4 overflow-hidden">
-                            <div class="flex justify-start items-center mr-8">
-                                <div class="flex flex-col pr-4 pl-2 text-center">
+                        <div class="w-full overflow-hidden">
+                            <div class="flex justify-start items-center mr-8 ">
+                                <div class="flex flex-col pt-4 pr-4 pl-2 text-center">
                                     <span class="font-extrabold h-5 text-lg whitespace-nowrap">06, Jan 22</span>
                                     <span class="text-grey text-sm whitespace-nowrap">22:22</span>
                                 </div>
