@@ -18,9 +18,13 @@ module.exports = {
       'white': '#fff',
     },
     extend: {
+      spacing: {
+        '200': '200px',
+        '558': '558px',
+      },
       transitionDuration: {
-        '10000': '10000ms',
-      }
+        'long': '12000ms',
+      },
     }
   }
 }
