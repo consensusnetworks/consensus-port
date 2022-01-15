@@ -33,6 +33,30 @@ npm run dev
 
 We need to add test scripts compatible with Nuxt SSR and Docker (something like `@nuxt/test-utils` for Nuxt 3). Then we need to run those test scripts in `.github/workflows/pull-request.yaml` after the step for building the Docker image.
 
+## Releases
+
+To create a new release according to the [Semantic Versioning](https://semver.org/) standard, we can use a CLI tool like [release-it](https://github.com/release-it/release-it). This helps us automate keeping our versioning synced across repositories and branches.
+
+First run the following command:
+```sh
+npm run release
+```
+Then select the appropriate version increment and agree to commit the release to the git repository:
+
+```sh
+? Select increment (next version): patch (0.0.2) # major, minor, or patch
+✔ npx auto-changelog -p
+
+Changeset:
+ M CHANGELOG.md
+ M package-lock.json
+ M package.json
+
+? Commit (Release 0.0.2)? y
+```
+
+As a result, updates to `CHANGELOG.md`, `package.json`, and `package-lock.json` are committed to the repository and a new GitHub release is create.
+
 ## Deployment
 
 We use the Docker CLI in our GitHub Actions workflows to build and push our images to [Docker Hub](https://hub.docker.com/r/consensusnetworks/consensus-port). Pull requests to `develop` and `master` branches trigger image builds (and eventually tests). Pushes to `master` branch trigger image builds and pushes to the registry under the 'latest' and commit hash tags. Releases from the `master` branch trigger image builds and pushes to the registry under the 'latest', release number, and commit hash tags. 
