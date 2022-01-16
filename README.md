@@ -38,9 +38,11 @@ We need to add test scripts compatible with Nuxt SSR and Docker (something like 
 To create a new release according to the [Semantic Versioning](https://semver.org/) standard, we can use a CLI tool like [release-it](https://github.com/release-it/release-it). This helps us automate keeping our versioning synced across repositories and branches.
 
 First run the following command:
+
 ```sh
 npm run release
 ```
+
 Then select the appropriate version increment and agree to commit the release to the git repository:
 
 ```sh
@@ -55,7 +57,11 @@ Changeset:
 ? Commit (Release 0.0.2)? y
 ```
 
-As a result, updates to `CHANGELOG.md`, `package.json`, and `package-lock.json` are committed to the repository and a new GitHub release is create.
+This sequence results in the following changes: 
+- [CHANGELOG.md](CHANGELOG.md) is updated with all commits since the previous version
+- [package.json](package.json), and [package-lock.json](package-lock.json) are updated with the new version
+- File changes are committed to the repository 
+- A new GitHub release is created with the new version as the tag
 
 ## Deployment
 
@@ -65,9 +71,9 @@ We can then manage our Kubernetes manifests in a separate repository to isolate 
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/consensus-port-roadmap) and open a new issue before starting!
+Pull requests targeting the `develop` branch are welcome anytime. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/consensus-port-roadmap) and open a new issue before starting!
 
-Please make sure to update tests as appropriate.
+Please make sure to update tests as appropriate. We will be adding a style guide in the future.
 
 ## License
 
