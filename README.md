@@ -80,7 +80,7 @@ This repository setup also makes a serverless developer feel at home making clou
 
 ## Contributing
 
-Pull requests targeting the `develop` branch are welcome anytime. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/consensus-port-roadmap) and open a new issue before starting!
+Pull requests targeting the `develop` branch are welcome anytime. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/consensus-port/issues) and open a new issue before starting!
 
 Please make sure to update tests as appropriate. We will be adding a style guide in the future.
 
