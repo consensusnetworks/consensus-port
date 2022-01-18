@@ -76,6 +76,8 @@ We can then manage our Kubernetes clusters and pod manifests in a separate repos
 - CI/CD pipelines for deploying integrated application resources to the cluster
 - Helmfiles and Helm charts for organizing common application resources for the cluster
 
+This repository setup also makes a serverless developer feel at home making cloud native applications (by hiding the ugly parts elsewhere).
+
 ## Contributing
 
 Pull requests targeting the `develop` branch are welcome anytime. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/consensus-port-roadmap) and open a new issue before starting!
