@@ -1,10 +1,5 @@
 <template>
-  <!-- 
-    I have found that the best way to make the Chart reactive
-    is to use the height prop that the Chart component provides and 
-    use the parent component to control the width. 
-   -->
-  <canvas :id="chartID" :height="height"></canvas>
+  <canvas :id="chartID"></canvas>
 </template>
 
 <script setup>
@@ -23,11 +18,6 @@ const props = defineProps({
   chartData: {
     type: Object,
     required: true,
-  },
-  height: {
-    type: String,
-    required: true,
-    default: '100'
   },
   title: {
     type: String,
@@ -51,6 +41,10 @@ let chart = null;
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
+  aspectRatio: 2.25,
+  onResize: null,
+  resizeDelay: 0,
   animtion: false,
   scales: {
     x: {
@@ -91,6 +85,7 @@ onMounted(() => {
     type: props.type,
     options,
   });
+  // window.addEventListener('resize', chart.resize())
 });
 
 // Reacts to new data from parent
