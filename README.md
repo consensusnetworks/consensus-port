@@ -31,7 +31,7 @@ npm run dev
 
 ## Testing
 
-We need to add test scripts compatible with Nuxt SSR and Docker (something like `@nuxt/test-utils` for Nuxt 3). Then we need to run those test scripts in `.github/workflows/pull-request.yaml` after the step for building the Docker image.
+We need to add test scripts compatible with Nuxt SSR and Docker (something like `@nuxt/test-utils` for Nuxt 3). Then we need to run those test scripts in `.github/workflows/pull-request.yaml` after the step for building the Docker image. In the longer term, we will also add better tooling for testing applications on local Kubernetes clusters that more closely resemble the production environment (more so than Kubernetes on Docker or K3s, using something like [Okteto](https://github.com/okteto/okteto))
 
 ## Releases
 
@@ -65,9 +65,16 @@ This sequence results in the following changes:
 
 ## Deployment
 
-We use the Docker CLI in our GitHub Actions workflows to build and push our images to [Docker Hub](https://hub.docker.com/r/consensusnetworks/consensus-port). Pull requests to `develop` and `master` branches trigger image builds (and eventually tests). Pushes to `master` branch trigger image builds and pushes to the registry under the 'latest' and commit hash tags. Releases from the `master` branch trigger image builds and pushes to the registry under the 'latest', release number, and commit hash tags. 
+We use the following GitHub Actions workflows to test, build and push our images to [our organization](https://hub.docker.com/r/consensusnetworks/consensus-port) on Docker Hub: 
+- Pull requests to `develop` and `master` branches trigger image builds (and eventually tests) 
+- Pushes to `master` branch trigger image builds and pushes to the registry under the tags **latest** and **{your-commit-hash}**
+- Releases from the `master` branch trigger image builds and pushes to the registry under the tags **latest**, **{your-commit-hash}**, and **{your-release-number}**
 
-We can then manage our Kubernetes manifests in a separate repository to isolate environment and deployment specific configuration. For reference, we included sample Kubernetes manifests that would be used for deploying this Nuxt app to AWS EKS in the `kubernetes` directory.
+We can then manage our Kubernetes clusters and pod manifests in a separate repository to isolate environment configuration from application development. For reference, we included sample Kubernetes manifests that would be used in the separate repository to deploy this Nuxt app to a cloud provider managed cluster in the `kubernetes` directory. In addition to manifests, the separate repository would cover the following:
+- Kubernetes cluster and managed infrastructure (like a DynamoDB) configuration
+- Environment variables and secrets
+- CI/CD pipelines for deploying integrated application resources to the cluster
+- Helmfiles and Helm charts for organizing common application resources for the cluster
 
 ## Contributing
 
