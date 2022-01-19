@@ -16,6 +16,7 @@ module.exports = {
       'secondary': '#f3f4f6',
       'grey': '#898484',
       'white': '#fff',
+      'black': '#000',
     },
     extend: {
       spacing: {
