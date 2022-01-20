@@ -6,9 +6,9 @@
                     Consensus Port Chain
                 </h2>
                 <div class="flex items-center h-8">
-                    <div 
-                    class="flex flex-col border-r border-primary px-2 text-center" 
-                    v-for="(item, index) in chainAnalytics" :key="index" 
+                    <div
+                    class="flex flex-col border-r border-primary px-2 text-center"
+                    v-for="(item, index) in chainAnalytics" :key="index"
                     :class="index === chainAnalytics.length - 1 ? 'border-none' : ''"
                     >
                         <span class="text-grey font-extrabold h-3 text-xs whitespace-nowrap">{{item.title}}</span>
@@ -19,25 +19,25 @@
             <hr class="text-primary opacity-30 overflow-hidden">
             <div class="h-558 w-full">
                 <div class="w-full flex justify-center mb-10">
-                    <Chart 
-                    chartID="transactionsChartData" 
+                    <Chart
+                    chartID="transactionsChartData"
                     type="line"
-                    :chartData="transactionsChartData" 
-                    title="Chain by Transaction Types" 
-                    height="110" 
+                    :chartData="transactionsChartData"
+                    title="Chain by Transaction Types"
+                    height="110"
                     />
                 </div>
                 <div class="w-full flex justify-center">
-                    <Chart 
+                    <Chart
                     chartID="contentChartData"
-                    type="line" 
-                    :chartData="contentChartData" 
-                    title="Chain by Content Type" 
-                    height="110" 
+                    type="line"
+                    :chartData="contentChartData"
+                    title="Chain by Content Type"
+                    height="110"
                     />
                 </div>
             </div>
-            
+
         </div>
         <div class="w-2/5 px-4 pt-4 pb-2 bg-white drop-shadow-md rounded-sm items-center h-full">
             <div class="flex justify-between items-center pb-2 overflow-hidden">
@@ -45,9 +45,9 @@
                     Recent Transactions
                 </h2>
                 <div class="flex items-center h-8 ">
-                    <div 
-                    class="flex flex-col border-r border-primary px-4 text-center" 
-                    v-for="(item, index) in transactionAnalytics" :key="index" 
+                    <div
+                    class="flex flex-col border-r border-primary px-4 text-center"
+                    v-for="(item, index) in transactionAnalytics" :key="index"
                     :class="index === transactionAnalytics.length - 1 ? 'border-none' : ''"
                     >
                         <span class="text-grey font-extrabold h-3 text-xs whitespace-nowrap">{{item.title}}</span>
@@ -84,12 +84,12 @@
                                             <span class="text-grey font-semibold h-3 text-xs whitespace-nowrap">Hash</span>
                                             <span class="text-primary text-sm whitespace-nowrap">00000000000005ad9e499c6df18acc5...</span>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                             <hr class="w-full mt-4 text-grey opacity-50">
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -98,6 +98,14 @@
 </template>
 
 <script setup>
+import {useAccumulate} from "../composables/useAccumulate";
+
+const { getTransaction, getTransactionHistory} = useAccumulate("testnet");
+
+const tx = await getTransaction('5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08')
+const txHistory= await getTransactionHistory('5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08')
+
+
 const labels = []
 const date = new Date()
 const year = date.getFullYear()
@@ -105,8 +113,9 @@ const month = date.getMonth()
 const day = date.getDate()
 
 for (let index = 0; index < day; index++) {
-    labels.push(`${index + 1}/${month + 1}`)
+  labels.push(`${index + 1}/${month + 1}`)
 }
+
 
 const transactionsChartData = useState("transactionsChartData", () => {
   return {
@@ -209,6 +218,5 @@ const transactionAnalytics = useState("transactionAnalytics", () => {
     },
   ]
 });
-
 
 </script>
