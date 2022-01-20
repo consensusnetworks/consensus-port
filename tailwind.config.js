@@ -11,13 +11,13 @@ module.exports = {
 
   ],
   theme: {
-    colors: {
-      'primary': '#F36F27',
-      'secondary': '#f3f4f6',
-      'grey': '#898484',
-      'white': '#fff',
-    },
     extend: {
+      colors: {
+        'primary': '#F36F27',
+        'secondary': '#f3f4f6',
+        'grey': '#898484',
+        'white': '#fff',
+      },
       spacing: {
         '200': '200px',
         '558': '558px',

@@ -89,22 +89,34 @@
                             </div>
                             <hr class="w-full mt-4 text-grey opacity-50">
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+  <!-- TODO: delete me before merging -->
+  <div>
+    <input type="range" min="0" max="100" class="slider" id="myRange" @change="getTxHistory">
+    <div>{{ JSON.stringify(transactionHistory) }}</div>
+  </div>
 </template>
 
 <script setup>
 import {useAccumulate} from "../composables/useAccumulate";
 
-const { getTransaction, getTransactionHistory} = useAccumulate("testnet");
+const { getTransactionHistory, transactionHistory, getTransaction, transaction} = useAccumulate("testnet");
 
-const tx = await getTransaction('5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08')
-const txHistory= await getTransactionHistory('5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08')
+async function getTxHistory() {
+   await getTransactionHistory({
+  url: "acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME",
+  start: 0,
+  count: 1,
+  })
+}
 
+async function getTx() {
+  await getTransaction("5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08")
+}
 
 const labels = []
 const date = new Date()
