@@ -1,6 +1,7 @@
 <template>
+  <div class="pt-20 pb-10 px-10 min-h-screen h-screen bg-secondary">
     <div class="flex justify-between h-full" >
-        <div class="w-7/12 px-4 pt-4 pb-2 bg-white drop-shadow-md rounded-sm h-full">
+        <div class="w-7/12 px-4 pt-4 pb-2 bg-white drop-shadow-md rounded-sm">
             <div class="flex justify-between items-center pb-2 overflow-hidden">
                 <h2 class="font-bold text-xl whitespace-nowrap">
                     Consensus Port Chain
@@ -34,6 +35,21 @@
                     :chartData="contentChartData"
                     title="Chain by Content Type"
                     height="110"
+            <div class="h-[95%] w-full overflow-hidden">
+                <div class="h-[50%] flex justify-center pb-4">
+                    <Chart 
+                    chartID="transactionsChartData" 
+                    type="line"
+                    :chartData="transactionsChartData" 
+                    title="Chain by Transaction Types" 
+                    />
+                </div>
+                <div class="h-[50%] flex justify-center pb-4">
+                    <Chart 
+                    chartID="contentChartData"
+                    type="line" 
+                    :chartData="contentChartData" 
+                    title="Chain by Content Type" 
                     />
                 </div>
             </div>
@@ -56,7 +72,7 @@
                 </div>
             </div>
             <hr class="mb-0 text-primary opacity-30">
-            <div class="overflow-auto h-558">
+            <div class="overflow-auto h-[95%]">
                 <div v-for="i in 20" :key="i" class="cursor-pointer">
                     <div class="flex justify-start">
                         <div class="flex flex-col justify-center w-4">
@@ -94,6 +110,7 @@
             </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script setup>
@@ -126,7 +143,7 @@ const transactionsChartData = useState("transactionsChartData", () => {
     datasets: [
       {
         type: "line",
-        data: [50,32,32,51,69,23,15,48,23,24,15,57,86],
+        data: labels.map(() => Math.floor(Math.random() * 100)),
         label: "Individual Transaction",
         color: "#ECAD8B",
         backgroundColor: "rgb(236, 173, 139, 0.0)",
@@ -137,7 +154,7 @@ const transactionsChartData = useState("transactionsChartData", () => {
       },
       {
         type: "line",
-        data: [23,15,54,23,24,15,57,86,50,32,32,51,69],
+        data: labels.map(() => Math.floor(Math.random() * 100)),
         label: "Smart Contract [Deployment]",
         color: "#BF4300",
         backgroundColor: "rgb(236, 173, 139, 0.0)",
@@ -148,7 +165,7 @@ const transactionsChartData = useState("transactionsChartData", () => {
       },
       {
         type: "line",
-        data: [26,45,26,12,78,45,23,21,25,56,48,62,27],
+        data: labels.map(() => Math.floor(Math.random() * 100)),
         label: "Smart Contract [Interaction]",
         color: "#898484",
         backgroundColor: "rgb(137, 132, 132, 0.0)",
@@ -168,7 +185,7 @@ const contentChartData = useState("contentChartData", () => {
     datasets: [
       {
         type: "line",
-        data: [50,32,32,51,69,23,15,48,23,24,15,57,86],
+        data: labels.map(() => Math.floor(Math.random() * 100)),
         label: "Supply Chain Data",
         color: "#ECAD8B",
         backgroundColor: "rgb(236, 173, 139, 0.0)",
@@ -179,7 +196,7 @@ const contentChartData = useState("contentChartData", () => {
       },
       {
         type: "line",
-        data: [23,15,54,23,24,15,57,86,50,32,32,51,69],
+        data: labels.map(() => Math.floor(Math.random() * 100)),
         label: "Digital Trading [Exchanges]",
         color: "#898484",
         backgroundColor: "rgb(137, 132, 132, 0.0)",

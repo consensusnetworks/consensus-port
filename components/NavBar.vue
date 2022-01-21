@@ -32,23 +32,26 @@
                     <input 
                     type="text" 
                     name="block-search" 
-                    placeholder="Search by transaction id, faucet url, or more"
-                    class="w-full border-b-2 border-slate-200 pb-1.5 outline-none focus:border-grey, text-primary "
+                    placeholder="Search by Address / Hash / Block / TLD / Block’s Content Name" 
+                    class="w-full border-b-2 border-primary outline-none focus:border-grey, text-primary "
+                    @keyup.enter="handleSubmit"
                     >
-                    <button class="text-primary hover:text-grey">
-                        <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        class="h-6 w-6" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke="currentColor">
-                            <path 
-                            stroke-linecap="round" 
-                            stroke-linejoin="round" 
-                            stroke-width="2" 
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </button>
+                    <nuxt-link to="/results">
+                        <button class="text-primary hover:text-grey" @click="handleSubmit">
+                            <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            class="h-6 w-6" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor">
+                                <path 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </nuxt-link>
                 </div>
             </div>
         </div>
@@ -76,11 +79,15 @@
         </aside>
     </nav>
 </template>
-<script setup>
 
+<script setup>
 const drawer = useState('drawer', () => false)
 const toggleDrawer = () => {
     drawer.value = !drawer.value
-}   
+}  
+
+const handleSubmit = (e) => {
+    console.log('running seach method', e)
+}
 
 </script>
