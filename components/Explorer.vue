@@ -94,28 +94,20 @@
             </div>
         </div>
     </div>
-  <!-- TODO: delete me before merging -->
-  <div>
-    <input type="range" min="0" max="100" class="slider" id="myRange" @change="getTxHistory">
-    <div>{{ JSON.stringify(transactionHistory) }}</div>
-  </div>
 </template>
 
 <script setup>
 import {useAccumulate} from "../composables/useAccumulate";
+const { getTransactionHistory} = useAccumulate("testnet");
 
-const { getTransactionHistory, transactionHistory, getTransaction, transaction} = useAccumulate("testnet");
+async function getTxHistory({ url, start, count}) {
+  console.log(`fetching ${count} transactions`);
 
-async function getTxHistory() {
-   await getTransactionHistory({
-  url: "acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME",
-  start: 0,
-  count: 1,
+  await getTransactionHistory({
+    url: url || "acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME",
+    start: start || 0,
+    count: parseInt(count) // count must be a number
   })
-}
-
-async function getTx() {
-  await getTransaction("5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08")
 }
 
 const labels = []
@@ -127,7 +119,6 @@ const day = date.getDate()
 for (let index = 0; index < day; index++) {
   labels.push(`${index + 1}/${month + 1}`)
 }
-
 
 const transactionsChartData = useState("transactionsChartData", () => {
   return {

@@ -32,8 +32,8 @@
                     <input 
                     type="text" 
                     name="block-search" 
-                    placeholder="Search by Address / Hash / Block / TLD / Block’s Content Name" 
-                    class="w-full border-b-2 border-primary outline-none focus:border-grey, text-primary "
+                    placeholder="Search by transaction id, faucet url, or more"
+                    class="w-full border-b-2 border-slate-200 pb-1.5 outline-none focus:border-grey, text-primary "
                     >
                     <button class="text-primary hover:text-grey">
                         <svg 

@@ -1,13 +1,12 @@
-import { useNuxtApp } from "#app";
-import {readonly, ref, onMounted} from "vue"
-
-
+import { useNuxtApp} from "#app";
+import {readonly, ref} from "vue"
 
 export const useAccumulate = (net: string): useAccumulate => {
     const { $instance: rpc } = useNuxtApp()
 
     const transactionHistory = ref<any>([])
     const transaction = ref<any>({})
+
 
     // defaults for the rpc request
     const defaults = {
@@ -19,16 +18,11 @@ export const useAccumulate = (net: string): useAccumulate => {
     // a simple increment is enough, see below
     let id = 0
 
-    // on mount, we want to get the transaction history
-    onMounted(() => {
-        console.log("on mount: get transaction history")
-
-
-    })
+    let whichNet = net || "testnet"
 
     // get transaction by id
     async function getTransaction(txId: string): Promise<TransactionQueryResponse> {
-        const tx = await rpc("https://testnet.accumulatenetwork.io/v2", {
+        const tx = await rpc(`https://${whichNet}.accumulatenetwork.io/v2`, {
             ...defaults,
             body: JSON.stringify({
                 jsonrpc: '2.0',
@@ -43,12 +37,13 @@ export const useAccumulate = (net: string): useAccumulate => {
         if (!tx.ok) return rpcErrCodes[tx.status.toString()]
 
         const data = await tx.json()
-        transaction.value = data.result
 
+        transaction.value = data.result
     }
 
     // get transaction history by address, start and count
-     async function getTransactionHistory(prop: TransactionHistoryRequest): Promise<any> {
+     async function getTransactionHistory(args: TransactionHistoryRequest): Promise<any> {
+        console.log(args)
         try {
             const history = await rpc("https://testnet.accumulatenetwork.io/v2", {
                 ...defaults,
@@ -56,11 +51,7 @@ export const useAccumulate = (net: string): useAccumulate => {
                     jsonrpc: '2.0',
                     id: id++,
                     method: 'query-tx-history',
-                    params: {
-                        url: prop.url,
-                        start: 0,
-                        count: 100
-                    },
+                    params: args
                 }),
             })
 
@@ -68,6 +59,7 @@ export const useAccumulate = (net: string): useAccumulate => {
 
             const data = await history.json()
             transactionHistory.value = data.result.items
+
         } catch (err) {
             console.error(err)
         }
