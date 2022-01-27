@@ -7,9 +7,9 @@
                     Consensus Port Chain
                 </h2>
                 <div class="flex items-center h-8">
-                    <div 
-                    class="flex flex-col border-r border-primary px-2 text-center" 
-                    v-for="(item, index) in chainAnalytics" :key="index" 
+                    <div
+                    class="flex flex-col border-r border-primary px-2 text-center"
+                    v-for="(item, index) in chainAnalytics" :key="index"
                     :class="index === chainAnalytics.length - 1 ? 'border-none' : ''"
                     >
                         <span class="text-grey font-extrabold h-3 text-xs whitespace-nowrap">{{item.title}}</span>
@@ -18,6 +18,23 @@
                 </div>
             </div>
             <hr class="text-primary opacity-30 overflow-hidden">
+            <div class="h-558 w-full">
+                <div class="w-full flex justify-center mb-10">
+                    <Chart
+                    chartID="transactionsChartData"
+                    type="line"
+                    :chartData="transactionsChartData"
+                    title="Chain by Transaction Types"
+                    height="110"
+                    />
+                </div>
+                <div class="w-full flex justify-center">
+                    <Chart
+                    chartID="contentChartData"
+                    type="line"
+                    :chartData="contentChartData"
+                    title="Chain by Content Type"
+                    height="110"
             <div class="h-[95%] w-full overflow-hidden">
                 <div class="h-[50%] flex justify-center pb-4">
                     <Chart 
@@ -36,7 +53,7 @@
                     />
                 </div>
             </div>
-            
+
         </div>
         <div class="w-2/5 px-4 pt-4 pb-2 bg-white drop-shadow-md rounded-sm items-center h-full">
             <div class="flex justify-between items-center pb-2 overflow-hidden">
@@ -44,9 +61,9 @@
                     Recent Transactions
                 </h2>
                 <div class="flex items-center h-8 ">
-                    <div 
-                    class="flex flex-col border-r border-primary px-4 text-center" 
-                    v-for="(item, index) in transactionAnalytics" :key="index" 
+                    <div
+                    class="flex flex-col border-r border-primary px-4 text-center"
+                    v-for="(item, index) in transactionAnalytics" :key="index"
                     :class="index === transactionAnalytics.length - 1 ? 'border-none' : ''"
                     >
                         <span class="text-grey font-extrabold h-3 text-xs whitespace-nowrap">{{item.title}}</span>
@@ -83,7 +100,7 @@
                                             <span class="text-grey font-semibold h-3 text-xs whitespace-nowrap">Hash</span>
                                             <span class="text-primary text-sm whitespace-nowrap">00000000000005ad9e499c6df18acc5...</span>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                             <hr class="w-full mt-4 text-grey opacity-50">
@@ -97,6 +114,19 @@
 </template>
 
 <script setup>
+import {useAccumulate} from "../composables/useAccumulate";
+const { getTransactionHistory} = useAccumulate("testnet");
+
+async function getTxHistory({ url, start, count}) {
+  console.log(`fetching ${count} transactions`);
+
+  await getTransactionHistory({
+    url: url || "acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME",
+    start: start || 0,
+    count: parseInt(count) // count must be a number
+  })
+}
+
 const labels = []
 const date = new Date()
 const year = date.getFullYear()
@@ -104,7 +134,7 @@ const month = date.getMonth()
 const day = date.getDate()
 
 for (let index = 0; index < day; index++) {
-    labels.push(`${index + 1}/${month + 1}`)
+  labels.push(`${index + 1}/${month + 1}`)
 }
 
 const transactionsChartData = useState("transactionsChartData", () => {
@@ -208,6 +238,5 @@ const transactionAnalytics = useState("transactionAnalytics", () => {
     },
   ]
 });
-
 
 </script>
