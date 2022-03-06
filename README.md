@@ -1,29 +1,33 @@
-# Consensus Port
+# Port
 
-![NuxtJS](https://img.shields.io/badge/Nuxt-black?style=for-the-badge&logo=nuxt.js&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-
-Accumulate Network block explorer for supply chain consensus.
+:ship: Accumulate block explorer for supply chain consensus
 
 ## About 
 
-Accumulate is a high performance blockchain for DeFi, integrating blockchains, protocols, oracles, and applications. This block explorer helps you understand and act upon transactions from supply chain oracle data on Accumulate, demonstrating how the network provides a bridge to the digital economy.
+Port block explorer helps you understand and act upon transactions from supply chain oracle data on Accumulate, demonstrating how the network provides a bridge to the digital economy. Accumulate is a high performance blockchain for DeFi, integrating blockchains, protocols, oracles, and applications.
 
 The default test supply chain oracle data for this explorer is on Accumulate testnet under the ADIs `acc://.../acme` and `acc://.../data`. If you'd like to use your own oracle ADIs to connect to your test data or supply chain, you can override the ADIs in `ADI_LIST` environment variable. This block explorer assumes a [standard schema](https://schema.org/) for supply chain oracle data, and you should structure your transactions according to this schema's required and extendable attributes. 
 
 ## Setup
 
-Make sure to install the dependencies
+Port is built with NuxtJS, Tailwind CSS, and Chart.js.
 
+![NuxtJS](https://img.shields.io/badge/Nuxt-black?style=for-the-badge&logo=nuxt.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
+
+### Installation
+
+First, make sure to install prerequesites:
+- Node.js LTS
+- Docker Desktop
+
+Next, install the app dependencies:
 ```bash
 npm install
 ```
 
-## Development
+### Development
 
 Start the development server on http://localhost:3000
 
@@ -31,7 +35,7 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-## Testing
+### Testing
 
 We need to add test scripts compatible with Nuxt SSR and Docker (something like `@nuxt/test-utils` for Nuxt 3). Then we need to run those test scripts in `.github/workflows/pull-request.yaml` after the step for building the Docker image. In the longer term, we will also add better tooling for testing applications on local Kubernetes clusters that more closely resemble the production environment (more so than Kubernetes on Docker or K3s, using something like [Okteto](https://github.com/okteto/okteto))
 
