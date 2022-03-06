@@ -10,11 +10,10 @@ The default test supply chain oracle data for this explorer is on Accumulate tes
 
 ## Setup
 
-Port comprises a NuxtJS SSR app with a Node/TypeScript backend and Vue/TypeScript frontend that can be deployed in a Docker container.
-
-Port's backend is made up of a GraphQL server and microservice APIs that integrate with ✻ Accumulate. Port's frontend uses Tailwind CSS and Chart.js.
+Port comprises a NuxtJS SSR app with a Node/TypeScript backend and Vue/TypeScript frontend that can be deployed anywhere in a Docker container. The backend provides the frontend with a GraphQL server and microservice APIs that integrate with ✻ Accumulate. Port's frontend gives end users powerful analytical displays using Tailwind CSS and Chart.js.
 
 ![NuxtJS](https://img.shields.io/badge/Nuxt-black?style=for-the-badge&logo=nuxt.js&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
 
